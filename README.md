@@ -1,4 +1,4 @@
-# MauiKit [![Build Status](https://travis-ci.org/Nitrux/mauikit.svg?branch=main)](https://travis-ci.org/Nitrux/mauikit)
+# MauiKit [![Build Status](https://travis-ci.org/Nitrux/mauikit.svg?branch=arm64)](https://travis-ci.org/Nitrux/mauikit)
 
 MauiKit from Git master.
 
