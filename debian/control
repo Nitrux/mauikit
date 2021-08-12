@@ -23,7 +23,6 @@ Package: qml-module-org-kde-mauikit
 Architecture: any
 Depends: libmauikit,
          qml-module-org-kde-kirigami2,
-         qml-module-qmltermwidget,
          qml-module-qtquick-controls2,
          qml-module-qtquick-shapes,
          ${misc:Depends},
