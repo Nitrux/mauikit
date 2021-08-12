@@ -1,3 +1,9 @@
+mauikit (0.0.2+2.0.0+git) nitrux; urgency=medium
+
+  * Update package dependencies.
+
+ -- Uri Herrera <uri_herrera@nxos.org>  Wed, 11 Aug 2021 20:05:00 -0500
+
 mauikit (0.0.1+2.0.0+git) nitrux; urgency=medium
 
   * Create package.
