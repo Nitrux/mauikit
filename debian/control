@@ -12,8 +12,7 @@ Build-Depends: cmake,
                libqt5svg5-dev,
                qtbase5-dev,
                qtdeclarative5-dev,
-               qtquickcontrols2-5-dev,
-               qtwebengine5-dev
+               qtquickcontrols2-5-dev
 Standards-Version: 4.2.1
 Homepage: https://maui-project.org/
 Vcs-Git: https://invent.kde.org/neon/neon-packaging/mauikit.git
@@ -24,10 +23,8 @@ Package: qml-module-org-kde-mauikit
 Architecture: any
 Depends: libmauikit,
          qml-module-org-kde-kirigami2,
-         qml-module-qmltermwidget,
          qml-module-qtquick-controls2,
          qml-module-qtquick-shapes,
-         qml-module-qtwebengine,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Kit for developing MAUI Apps.
