@@ -4,6 +4,7 @@ Priority: optional
 Build-Depends: cmake,
                debhelper,
                extra-cmake-modules,
+               libxcb-shape0-dev,
                libkf5i18n-dev,
                libkf5kio-dev,
                libkf5notifications-dev,
