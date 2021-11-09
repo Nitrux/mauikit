@@ -22,7 +22,7 @@ mk-build-deps -i -t "apt-get --yes" -r
 
 ### Clone repo.
 
-git clone --depth 1 --branch v2.0.1 https://invent.kde.org/maui/mauikit.git
+git clone --depth 1 --branch v2.1 https://invent.kde.org/maui/mauikit.git
 
 mv mauikit/* .
 
