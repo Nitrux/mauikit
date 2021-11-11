@@ -84,8 +84,8 @@ checkinstall -D -y \
 	--pkgarch=amd64 \
 	--pkgrelease="1" \
 	--pkglicense=LGPL-3 \
-	--pkggroup=lib
-	--pkgsource=mauikit
+	--pkggroup=lib \
+	--pkgsource=mauikit \
 	--pakdir=../.. \
 	--maintainer="Uri Herrera <uri_herrera@nxos.org>" \
 	--provides=libmauikit,mauikit-dev,qml-module-org-kde-mauikit \
