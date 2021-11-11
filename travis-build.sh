@@ -2,7 +2,7 @@
 
 set -x
 
-### Install Build Dependencies #1
+### Install Build Tools #1
 
 DEBIAN_FRONTEND=noninteractive apt -qq update
 DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
@@ -31,7 +31,7 @@ DEBIAN_FRONTEND=noninteractive apt-key adv --keyserver keyserver.ubuntu.com --re
 
 DEBIAN_FRONTEND=noninteractive apt -qq update
 
-### Install Build Dependencies #2
+### Install Package Build Dependencies #2
 
 DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
 	libkf5i18n-dev \
@@ -50,15 +50,13 @@ DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
 	qtdeclarative5-dev \
 	qtquickcontrols2-5-dev \
 
-### Clone repo.
+### Clone Repository
 
 git clone --depth 1 --branch v2.1 https://invent.kde.org/maui/mauikit.git
 
-mv mauikit/* .
+rm -rf mauikit/{demo,LICENSE,README.md}
 
-rm -rf mauikit demo LICENSE README.md
-
-### Build Deb
+### Build Debian Package
 ### DO NOT USE debuild,screw it
 
 mkdir -p mauikit/build && cd mauikit/build
