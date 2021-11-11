@@ -2,23 +2,53 @@
 
 set -x
 
-apt -qq update
-apt -qq -yy install equivs curl git wget gnupg2 checkinstall
+### Install Build Dependencies #1
 
-### FIXME - the container mauikit/ubuntu-18.04-amd64 does have the neon repo but for some idiotic reason it isn't working here
+DEBIAN_FRONTEND=noninteractive apt -qq update
+DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
+	appstream \
+	automake \
+	autotools-dev \
+	build-essential \
+	checkinstall \
+	cmake \
+	curl \
+	devscripts \
+	equivs \
+	extra-cmake-modules \
+	gettext \
+	git \
+	gnupg2 \
+	lintian \
+	wget
+
+### Add Neon Sources
 
 wget -qO /etc/apt/sources.list.d/neon-user-repo.list https://raw.githubusercontent.com/Nitrux/iso-tool/development/configs/files/sources.list.neon.user
 
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
+DEBIAN_FRONTEND=noninteractive apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 	55751E5D > /dev/null
 
-apt -qq update
+DEBIAN_FRONTEND=noninteractive apt -qq update
 
-### Install Dependencies
+### Install Build Dependencies #2
 
-DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends devscripts debhelper gettext lintian build-essential automake autotools-dev cmake extra-cmake-modules appstream qml-module-qtquick-controls2 qml-module-qtquick-shapes qml-module-qtgraphicaleffects
-
-mk-build-deps -i -t "apt-get --yes" -r
+DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
+	libkf5i18n-dev \
+	libkf5kio-dev \
+	libkf5notifications-dev \
+	libkf5solid-dev \
+	libkf5syntaxhighlighting-dev \
+	libqt5svg5-dev \
+	libqt5x11extras5-dev \
+	libxcb-icccm4-dev \
+	libxcb-shape0-dev \
+	qml-module-qtgraphicaleffects \
+	qml-module-qtquick-controls2 \
+	qml-module-qtquick-shapes \
+	qtbase5-dev \
+	qtdeclarative5-dev \
+	qtquickcontrols2-5-dev \
 
 ### Clone repo.
 
