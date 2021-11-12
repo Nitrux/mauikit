@@ -56,8 +56,7 @@ git clone --depth 1 --branch v2.1 https://invent.kde.org/maui/mauikit.git
 
 rm -rf mauikit/{demo,LICENSE,README.md}
 
-### Build Debian Package
-### DO NOT USE debuild,screw it
+### Compile Source
 
 mkdir -p mauikit/build && cd mauikit/build
 
@@ -76,6 +75,23 @@ cmake \
 
 make
 
+### Run checkinstall and Build Debian Package
+### DO NOT USE debuild,screw it
+
+>> description-pak printf "%s\n" \
+	'----------------------  Cut here ----------------------' \
+	'Kit for developing MAUI Apps.' \
+	'A set of templated controls and tools based off QQC2 and Kirigami' \
+	'shared among the Maui set of applications.' \
+	'.' \
+	'Maui Kit helps to quickly build UIs that follow the Maui HIG' \
+	'and bring ready to go tools for different platforms,' \
+	'such as Android and Linux' \
+	'.' \
+	'This package contains the mauikit shared library,the mauikit qml module' \
+	'and mauikit development files.' \
+	'----------------------  Cut here ----------------------;'
+
 checkinstall -D -y \
 	--install=no \
 	--fstrans=yes \
@@ -93,4 +109,5 @@ checkinstall -D -y \
 	--nodoc \
 	--strip=no \
 	--stripso=yes \
-	--reset-uids=yes
+	--reset-uids=yes \
+	--deldesc=yes
