@@ -79,16 +79,17 @@ make
 ### DO NOT USE debuild,screw it
 
 >> description-pak printf "%s\n" \
-	'Kit for developing MAUI Apps.' \
-	'A set of templated controls and tools based off QQC2 and Kirigami' \
+	'A free and modular front-end framework for developing user experiences.' \
+	'' \
+	'MauiKit is a set of templated controls and tools based on QQC2 and Kirigami' \
 	'shared among the Maui set of applications.' \
 	'' \
-	'Maui Kit helps to quickly build UIs that follow the Maui HIG' \
-	'and bring ready to go tools for different platforms,' \
-	'such as Android and Linux' \
+	'Maui stands for Multi-Adaptable User Interface and allows ' \
+	'any Maui app to run on various platforms + devices,' \
+	'like Linux Desktop and Phones, Android, or Windows.' \
 	'' \
-	'This package contains the mauikit shared library, the mauikit qml module' \
-	'and the mauikit development files.' \
+	'This package contains the MauiKit shared library, the MauiKit qml module' \
+	'and the MauiKit development files.' \
 	'' \
 	''
 
