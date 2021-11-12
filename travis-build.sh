@@ -86,7 +86,7 @@ make
 	'Maui Kit helps to quickly build UIs that follow the Maui HIG' \
 	'and bring ready to go tools for different platforms,' \
 	'such as Android and Linux' \
-	' ' \
+	'' \
 	'This package contains the mauikit shared library, the mauikit qml module' \
 	'and the mauikit development files.' \
 	'' \
