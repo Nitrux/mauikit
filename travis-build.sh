@@ -76,7 +76,7 @@ cmake \
 make
 
 ### Run checkinstall and Build Debian Package
-### DO NOT USE debuild,screw it
+### DO NOT USE debuild, screw it
 
 >> description-pak printf "%s\n" \
 	'A free and modular front-end framework for developing user experiences.' \
