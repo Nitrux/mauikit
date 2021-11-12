@@ -48,7 +48,7 @@ DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
 	qml-module-qtquick-shapes \
 	qtbase5-dev \
 	qtdeclarative5-dev \
-	qtquickcontrols2-5-dev \
+	qtquickcontrols2-5-dev
 
 ### Clone Repository
 
