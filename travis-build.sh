@@ -79,7 +79,6 @@ make
 ### DO NOT USE debuild,screw it
 
 >> description-pak printf "%s\n" \
-	'----------------------  Cut here ----------------------' \
 	'Kit for developing MAUI Apps.' \
 	'A set of templated controls and tools based off QQC2 and Kirigami' \
 	'shared among the Maui set of applications.' \
@@ -88,9 +87,10 @@ make
 	'and bring ready to go tools for different platforms,' \
 	'such as Android and Linux' \
 	'.' \
-	'This package contains the mauikit shared library,the mauikit qml module' \
-	'and mauikit development files.' \
-	'----------------------  Cut here ----------------------;'
+	'This package contains the mauikit shared library, the mauikit qml module' \
+	'and the mauikit development files.'
+	' ' \
+	' '
 
 checkinstall -D -y \
 	--install=no \
