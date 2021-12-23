@@ -96,8 +96,8 @@ make
 checkinstall -D -y \
 	--install=no \
 	--fstrans=yes \
-	--pkgname=mauikit \
-	--pkgversion=2.1.0 \
+	--pkgname=mauikit-git \
+	--pkgversion=2.1.1+git \
 	--pkgarch=amd64 \
 	--pkgrelease="1" \
 	--pkglicense=LGPL-3 \
@@ -105,7 +105,7 @@ checkinstall -D -y \
 	--pkgsource=mauikit \
 	--pakdir=../.. \
 	--maintainer=uri_herrera@nxos.org \
-	--provides=mauikit \
+	--provides=mauikit-git \
 	--requires=libc6,libkf5configcore5,libkf5coreaddons5,libkf5i18n5,libkf5notifications5,libqt5core5a,libqt5gui5,libqt5qml5,libstdc++6,qml-module-org-kde-kirigami2,qml-module-qtquick-controls2,qml-module-qtquick-shapes \
 	--nodoc \
 	--strip=no \
