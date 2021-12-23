@@ -52,7 +52,7 @@ DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
 
 ### Clone Repository
 
-git clone --depth 1 --branch v2.1 https://invent.kde.org/maui/mauikit.git
+git clone --depth 1 --branch master https://invent.kde.org/maui/mauikit.git
 
 rm -rf mauikit/{demo,LICENSE,README.md}
 
