@@ -9,7 +9,7 @@ script:
 
 branches:
   only:
-    - git-master
+    - main
 
 notifications:
   email: false
