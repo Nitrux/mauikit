@@ -47,7 +47,7 @@ DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
 	libqt5x11extras5-dev \
 	libxcb-icccm4-dev \
 	libxcb-shape0-dev \
-	maui-manager-git
+	maui-manager-git \
 	qml-module-qtgraphicaleffects \
 	qml-module-qtquick-controls2 \
 	qml-module-qtquick-shapes \
