@@ -115,7 +115,7 @@ checkinstall -D -y \
 	--pakdir=../.. \
 	--maintainer=uri_herrera@nxos.org \
 	--provides=mauikit-git \
-	--requires=libc6,libkf5configcore5,libkf5coreaddons5,libkf5i18n5,libkf5notifications5,libqt5core5a,libqt5gui5,libqt5qml5,libstdc++6,maui-manager-git,qml-module-org-kde-kirigami2,qml-module-qtquick-controls2,qml-module-qtquick-shapes \
+	--requires="libc6,libkf5configcore5,libkf5coreaddons5,libkf5i18n5,libkf5notifications5,libqt5core5a,libqt5gui5,libqt5qml5,libstdc++6,maui-manager-git \(\>= 2.2.0+git\),qml-module-org-kde-kirigami2,qml-module-qtquick-controls2,qml-module-qtquick-shapes" \
 	--nodoc \
 	--strip=no \
 	--stripso=yes \
