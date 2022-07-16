@@ -36,6 +36,7 @@ wget -qO /etc/apt/sources.list.d/nitrux-testing-repo.list https://raw.githubuser
 DEBIAN_FRONTEND=noninteractive apt -qq update
 
 ### Install Package Build Dependencies #2
+### Mauikit needs ECM > 5.90
 
 DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
 	libkf5i18n-dev \
@@ -54,6 +55,9 @@ DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
 	qtbase5-dev \
 	qtdeclarative5-dev \
 	qtquickcontrols2-5-dev
+
+DEBIAN_FRONTEND=noninteractive apt -qq -yy install --only-upgrade \
+	extra-cmake-modules
 
 ### Clone Repository
 
