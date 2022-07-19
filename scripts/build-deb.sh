@@ -3,6 +3,7 @@
 set -x
 
 ### Update sources
+
 wget -qO /etc/apt/sources.list.d/neon-user-repo.list https://raw.githubusercontent.com/Nitrux/iso-tool/development/configs/files/sources.list.neon.user
 
 wget -qO /etc/apt/sources.list.d/nitrux-main-compat-repo.list https://raw.githubusercontent.com/Nitrux/iso-tool/development/configs/files/sources.list.nitrux
@@ -22,6 +23,8 @@ DEBIAN_FRONTEND=noninteractive apt -qq update
 
 DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
 	maui-manager-git
+
+### Download Source
 
 git clone --depth 1 --branch $MAUIKIT_BRANCH https://invent.kde.org/maui/mauikit.git
 
