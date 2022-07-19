@@ -23,7 +23,7 @@ DEBIAN_FRONTEND=noninteractive apt -qq update
 DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
 	maui-manager-git
 
-git clone --depth 1 --branch master https://invent.kde.org/maui/mauikit.git
+git clone --depth 1 --branch $MAUIKIT_BRANCH https://invent.kde.org/maui/mauikit.git
 
 rm -rf mauikit/{demo,LICENSE,README.md}
 
@@ -67,7 +67,7 @@ checkinstall -D -y \
 	--install=no \
 	--fstrans=yes \
 	--pkgname=mauikit-git \
-	--pkgversion=$PACKAGE_VERSION \
+	--pkgversion=$MAUIKIT_BRANCH+git+$PACKAGE_VERSION \
 	--pkgarch=amd64 \
 	--pkgrelease="1" \
 	--pkglicense=LGPL-3 \
