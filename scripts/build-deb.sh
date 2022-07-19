@@ -67,7 +67,7 @@ checkinstall -D -y \
 	--install=no \
 	--fstrans=yes \
 	--pkgname=mauikit-git \
-	--pkgversion=$MAUIKIT_BRANCH+git+$PACKAGE_VERSION \
+	--pkgversion=$PACKAGE_VERSION \
 	--pkgarch=amd64 \
 	--pkgrelease="1" \
 	--pkglicense=LGPL-3 \
