@@ -1,65 +1,27 @@
-#!/bin/bash
+#! /bin/bash
 
 set -x
 
-### Install Build Tools #1
-
-DEBIAN_FRONTEND=noninteractive apt -qq update
-DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
-	appstream \
-	automake \
-	autotools-dev \
-	build-essential \
-	checkinstall \
-	cmake \
-	curl \
-	devscripts \
-	equivs \
-	extra-cmake-modules \
-	gettext \
-	git \
-	gnupg2 \
-	lintian \
-	wget
-
-### Add Neon Sources
-
+### Update sources
 wget -qO /etc/apt/sources.list.d/neon-user-repo.list https://raw.githubusercontent.com/Nitrux/iso-tool/development/configs/files/sources.list.neon.user
+
+wget -qO /etc/apt/sources.list.d/nitrux-main-compat-repo.list https://raw.githubusercontent.com/Nitrux/iso-tool/development/configs/files/sources.list.nitrux
+
+wget -qO /etc/apt/sources.list.d/nitrux-testing-repo.list https://raw.githubusercontent.com/Nitrux/iso-tool/development/configs/files/sources.list.nitrux.testing
 
 DEBIAN_FRONTEND=noninteractive apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 	55751E5D > /dev/null
 
+curl -L https://packagecloud.io/nitrux/repo/gpgkey | apt-key add -;
+curl -L https://packagecloud.io/nitrux/compat/gpgkey | apt-key add -;
 curl -L https://packagecloud.io/nitrux/testing/gpgkey | apt-key add -;
-
-wget -qO /etc/apt/sources.list.d/nitrux-testing-repo.list https://raw.githubusercontent.com/Nitrux/iso-tool/development/configs/files/sources.list.nitrux.testing
 
 DEBIAN_FRONTEND=noninteractive apt -qq update
 
 ### Install Package Build Dependencies #2
-### Mauikit needs ECM > 5.90
 
 DEBIAN_FRONTEND=noninteractive apt -qq -yy install --no-install-recommends \
-	libkf5i18n-dev \
-	libkf5kio-dev \
-	libkf5notifications-dev \
-	libkf5solid-dev \
-	libkf5syntaxhighlighting-dev \
-	libqt5svg5-dev \
-	libqt5x11extras5-dev \
-	libxcb-icccm4-dev \
-	libxcb-shape0-dev \
-	maui-manager-git \
-	qml-module-qtgraphicaleffects \
-	qml-module-qtquick-controls2 \
-	qml-module-qtquick-shapes \
-	qtbase5-dev \
-	qtdeclarative5-dev \
-	qtquickcontrols2-5-dev
-
-DEBIAN_FRONTEND=noninteractive apt -qq -yy install --only-upgrade \
-	extra-cmake-modules
-
-### Clone Repository
+	maui-manager-git
 
 git clone --depth 1 --branch master https://invent.kde.org/maui/mauikit.git
 
@@ -67,7 +29,7 @@ rm -rf mauikit/{demo,LICENSE,README.md}
 
 ### Compile Source
 
-mkdir -p mauikit/build && cd mauikit/build
+mkdir -p build && cd build
 
 cmake \
 	-DCMAKE_INSTALL_PREFIX=/usr \
@@ -80,12 +42,11 @@ cmake \
 	-DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON \
 	-DCMAKE_INSTALL_RUNSTATEDIR=/run "-GUnix Makefiles" \
 	-DCMAKE_VERBOSE_MAKEFILE=ON \
-	-DCMAKE_INSTALL_LIBDIR=lib/x86_64-linux-gnu ..
+	-DCMAKE_INSTALL_LIBDIR=lib/x86_64-linux-gnu ../mauikit/
 
-make
+make -j$(nproc)
 
 ### Run checkinstall and Build Debian Package
-### DO NOT USE debuild, screw it
 
 >> description-pak printf "%s\n" \
 	'A free and modular front-end framework for developing user experiences.' \
@@ -106,14 +67,14 @@ checkinstall -D -y \
 	--install=no \
 	--fstrans=yes \
 	--pkgname=mauikit-git \
-	--pkgversion=2.2.0+git+1 \
+	--pkgversion=$PACKAGE_VERSION \
 	--pkgarch=amd64 \
 	--pkgrelease="1" \
 	--pkglicense=LGPL-3 \
 	--pkggroup=libs \
 	--pkgsource=mauikit \
-	--pakdir=../.. \
-	--maintainer=uri_herrera@nxos.org \
+	--pakdir=. \
+	--maintainer=probal31@gmail.com \
 	--provides=mauikit-git \
 	--requires="libc6,libkf5configcore5,libkf5coreaddons5,libkf5i18n5,libkf5notifications5,libqt5core5a,libqt5gui5,libqt5qml5,libstdc++6,maui-manager-git \(\>= 2.2.0+git\),qml-module-org-kde-kirigami2,qml-module-qtquick-controls2,qml-module-qtquick-shapes" \
 	--nodoc \
