@@ -18,6 +18,9 @@ apt -qq update
 
 ### Install Package Build Dependencies #2
 
+apt -qq -yy install --no-install-recommends --only-upgrade \
+	extra-cmake-modules/trixie
+
 apt -qq -yy install --no-install-recommends \
 	maui-manager-git
 
