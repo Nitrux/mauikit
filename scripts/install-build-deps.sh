@@ -32,4 +32,6 @@ $APT_COMMAND install -qy --no-install-recommends \
     qt6-declarative-dev \
     qt6-svg-dev \
     qt6-multimedia-dev \
-    libkf6notifications-dev
+    libkf6notifications-dev \
+    libkf6coreaddons-dev \
+    libkf6i18n-dev
