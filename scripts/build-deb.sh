@@ -1,21 +1,32 @@
 #!/bin/bash
 
-set -x
+set -eu
 
 ### Update sources
 
-wget -qO /etc/apt/sources.list.d/nitrux-depot.list https://raw.githubusercontent.com/Nitrux/iso-tool/legacy/configs/files/sources/sources.list.nitrux
-wget -qO /etc/apt/sources.list.d/nitrux-testing.list https://raw.githubusercontent.com/Nitrux/iso-tool/legacy/configs/files/sources/sources.list.nitrux.testing
+mkdir -p /etc/apt/keyrings
 
-curl -L https://packagecloud.io/nitrux/depot/gpgkey | apt-key add -;
-curl -L https://packagecloud.io/nitrux/testing/gpgkey | apt-key add -;
-curl -L https://packagecloud.io/nitrux/unison/gpgkey | apt-key add -;
+curl -fsSL https://packagecloud.io/nitrux/depot/gpgkey | gpg --dearmor -o /etc/apt/keyrings/nitrux_depot-archive-keyring.gpg
+curl -fsSL https://packagecloud.io/nitrux/testing/gpgkey | gpg --dearmor -o /etc/apt/keyrings/nitrux_testing-archive-keyring.gpg
+curl -fsSL https://packagecloud.io/nitrux/unison/gpgkey | gpg --dearmor -o /etc/apt/keyrings/nitrux_unison-archive-keyring.gpg
 
-apt update
+cat <<EOF > /etc/apt/sources.list.d/nitrux-depot.list
+deb [signed-by=/etc/apt/keyrings/nitrux_depot-archive-keyring.gpg] https://packagecloud.io/nitrux/depot/debian/ trixie main
+EOF
+
+cat <<EOF > /etc/apt/sources.list.d/nitrux-testing.list
+deb [signed-by=/etc/apt/keyrings/nitrux_testing-archive-keyring.gpg] https://packagecloud.io/nitrux/testing/debian/ trixie main
+EOF
+
+cat <<EOF > /etc/apt/sources.list.d/nitrux-unison.list
+deb [signed-by=/etc/apt/keyrings/nitrux_unison-archive-keyring.gpg] https://packagecloud.io/nitrux/unison/debian/ trixie main
+EOF
+
+apt -q update
 
 ### Install Package Build Dependencies #2
 
-apt -qq -yy install --no-install-recommends \
+apt -q -y install --no-install-recommends \
 	maui-manager-git
 
 ### Download Source
@@ -41,7 +52,7 @@ cmake \
 	-DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DCMAKE_INSTALL_LIBDIR=/usr/lib/x86_64-linux-gnu ../mauikit/
 
-make -j$(nproc)
+make -j"$(nproc)"
 
 make install
 
@@ -57,8 +68,8 @@ make install
 	'any Maui app to run on various platforms + devices,' \
 	'like Linux Desktop and Phones, Android, or Windows.' \
 	'' \
-	'This package contains the MauiKit shared library, the MauiKit qml module' \
-	'and the MauiKit development files.' \
+	'This package contains the MauiKit shared library, the MauiKit QML module' \
+	'and the MauiKit development headers.' \
 	'' \
 	''
 
