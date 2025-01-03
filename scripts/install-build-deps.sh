@@ -23,18 +23,11 @@ $APT_COMMAND install -qy --no-install-recommends \
     gnupg2 \
     lintian \
     nlohmann-json3-dev \
-    libkf5i18n-dev \
-    libkf5kio-dev \
-    libkf5notifications-dev \
-    libkf5solid-dev \
-    libkf5syntaxhighlighting-dev \
-    libqt5svg5-dev \
-    libqt5x11extras5-dev \
     libxcb-icccm4-dev \
     libxcb-shape0-dev \
     qml-module-qtgraphicaleffects \
     qml-module-qtquick-controls2 \
     qml-module-qtquick-shapes \
-    qtbase5-dev \
-    qtdeclarative5-dev \
-    qtquickcontrols2-5-dev
+    qt6-base-dev \
+    qt6-declarative-dev \
+    qt6-svg-dev 
