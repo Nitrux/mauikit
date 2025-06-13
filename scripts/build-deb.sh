@@ -80,7 +80,7 @@ make install
 checkinstall -D -y \
 	--install=no \
 	--fstrans=yes \
-	--pkgname=mauikit-git \
+	--pkgname=mauikit \
 	--pkgversion="$PACKAGE_VERSION" \
 	--pkgarch="$(dpkg --print-architecture)" \
 	--pkgrelease="1" \
