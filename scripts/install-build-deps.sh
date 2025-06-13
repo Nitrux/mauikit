@@ -78,7 +78,7 @@ mkdir -p /etc/apt/keyrings
 curl -fsSL https://packagecloud.io/nitrux/mauikit/gpgkey | gpg --dearmor -o /etc/apt/keyrings/nitrux_mauikit-archive-keyring.gpg
 
 cat <<EOF > /etc/apt/sources.list.d/nitrux-mauikit.list
-deb [signed-by=/etc/apt/keyrings/nitrux_mauikit-archive-keyring.gpg] https://packagecloud.io/nitrux/mauikit/debian/ trixie main
+deb [signed-by=/etc/apt/keyrings/nitrux_mauikit-archive-keyring.gpg] https://packagecloud.io/nitrux/mauikit/debian/ forky main
 EOF
 
 $APT_COMMAND update -q
