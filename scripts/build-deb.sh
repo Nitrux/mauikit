@@ -90,7 +90,7 @@ checkinstall -D -y \
 	--pakdir=. \
 	--maintainer=uri_herrera@nxos.org \
 	--provides=mauikit-git \
-	--requires="libc6,libkf6coreaddons6,libkf6i18n6,libkf6notifications6,libkf6windowsystem6,libqt6core6t64,libqt6gui6,libqt6qml6,libqt6quick6,libqt6quickcontrols2-6,libqt6quickshapes6,libqt6svg6,libqt6svgwidgets6,maui-manager \(\>= 4.0.2\),qml6-module-org-kde-kirigami,qml6-module-qtquick-controls,qml6-module-qtquick-shapes" \
+	--requires="libc6,libkf6coreaddons6,libkf6i18n6,libkf6notifications6,libkf6windowsystem6,libqt6core6,libqt6gui6,libqt6qml6,libqt6quick6,libqt6quickcontrols2-6,libqt6quickshapes6,libqt6svg6,libqt6svgwidgets6,maui-manager \(\>= 4.0.2\),qml6-module-org-kde-kirigami,qml6-module-qtquick-controls,qml6-module-qtquick-shapes" \
 	--nodoc \
 	--strip=no \
 	--stripso=yes \
