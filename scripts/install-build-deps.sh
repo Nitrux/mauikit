@@ -98,3 +98,18 @@ $APT_COMMAND install -y - --no-install-recommends \
     qt6-declarative-dev \
     qt6-multimedia-dev \
     qt6-svg-dev
+
+
+# -- Add package from our repository.
+
+mkdir -p /etc/apt/keyrings
+
+curl -fsSL https://packagecloud.io/nitrux/zbkit/gpgkey | gpg --dearmor -o /etc/apt/keyrings/nitrux_zbkit-archive-keyring.gpg
+
+cat <<EOF > /etc/apt/sources.list.d/nitrux-zbkit.list
+deb [signed-by=/etc/apt/keyrings/nitrux_zbkit-archive-keyring.gpg] https://packagecloud.io/nitrux/zbkit/debian/ forky main
+EOF
+
+$APT_COMMAND update -q
+$APT_COMMAND install -y - --no-install-recommends \
+    maui-manager
