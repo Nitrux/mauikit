@@ -107,7 +107,7 @@ mkdir -p /etc/apt/keyrings
 curl -fsSL https://packagecloud.io/nitrux/zbkit/gpgkey | gpg --dearmor -o /etc/apt/keyrings/nitrux_zbkit-archive-keyring.gpg
 
 cat <<EOF > /etc/apt/sources.list.d/nitrux-zbkit.list
-deb [signed-by=/etc/apt/keyrings/nitrux_zbkit-archive-keyring.gpg] https://packagecloud.io/nitrux/zbkit/debian/ bookworm main
+deb [signed-by=/etc/apt/keyrings/nitrux_zbkit-archive-keyring.gpg] https://packagecloud.io/nitrux/zbkit/debian/ bullseye main
 EOF
 
 $APT_COMMAND update -q
