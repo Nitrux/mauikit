@@ -62,7 +62,7 @@ cat <<EOF > /etc/apt/sources.list.d/nitrux-mauikit.sources
 Types: deb
 Description: Nitrux MauiKit Repo
 URIs: https://packagecloud.io/nitrux/mauikit/debian/
-Suites: forky
+Suites: duke
 Components: main
 Signed-By: /etc/apt/keyrings/nitrux-mauikit.gpg
 Enabled: yes
