@@ -10,6 +10,7 @@ _A free and modular front-end framework for developing user experiences._
 ![image](https://user-images.githubusercontent.com/3053525/141736660-da296044-d48c-4bf8-8fa9-f633af84855d.png)
 
 # Issues
+
 If you find problems with the contents of this repository please create an issue.
 
 ©2021 Nitrux Latinoamericana S.C.
