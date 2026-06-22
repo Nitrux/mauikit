@@ -41,6 +41,7 @@ $APT_COMMAND install -y --no-install-recommends \
     libkf6windowsystem-dev \
     libxcb-icccm4-dev \
     libxcb-shape0-dev \
+    libxkbcommon-dev \
     lintian \
     nlohmann-json3-dev \
     qml6-module-qt5compat-graphicaleffects \
