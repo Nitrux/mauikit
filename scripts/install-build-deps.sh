@@ -26,6 +26,7 @@ $APT_COMMAND install -y --no-install-recommends \
     automake \
     autotools-dev \
     build-essential \
+    libdbus-1-dev \
     meson \
     ninja-build \
     pkg-config \
