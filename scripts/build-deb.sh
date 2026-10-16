@@ -42,6 +42,13 @@ meson compile -C "$meson_dir" -j "$(nproc)"
 
 DESTDIR="$stage_dir" meson install -C "$meson_dir"
 
+style_qmldir="$(find "$stage_dir/usr" -type f -path '*/qt6/qml/org/mauikit/style/qmldir' -print -quit)"
+style_plugin="$(find "$stage_dir/usr" -type f -name 'libMauiStyle.so' -print -quit)"
+if [ -z "$style_qmldir" ] || [ -z "$style_plugin" ]; then
+    echo "MauiKit style QML module was not installed." >&2
+    exit 1
+fi
+
 # -- Create DEBIAN control file.
 
 mkdir -p "$stage_dir/DEBIAN"
