@@ -6,7 +6,7 @@
 
 # -- Exit on errors.
 
-set -e
+set -euo pipefail
 
 
 # -- Check if running as root.
@@ -27,9 +27,11 @@ $APT_COMMAND install -y --no-install-recommends \
     autotools-dev \
     build-essential \
     libdbus-1-dev \
-    meson \
-    ninja-build \
+    libkf6config-dev \
+    cmake \
+    extra-cmake-modules \
     pkg-config \
+    libwayland-dev \
     curl \
     devscripts \
     equivs \
@@ -50,6 +52,8 @@ $APT_COMMAND install -y --no-install-recommends \
     qml6-module-qtquick-shapes \
     qt6-base-dev \
     qt6-wayland-dev \
+    qt6-wayland-dev-tools \
+    qt6-wayland-private-dev \
     qt6-base-dev-tools \
     qt6-base-private-dev \
     qt6-declarative-dev \

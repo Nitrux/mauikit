@@ -12,8 +12,9 @@ set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
-PACKAGE_VERSION="${PACKAGE_VERSION:-0.0.1}"
+PACKAGE_VERSION="${PACKAGE_VERSION:?PACKAGE_VERSION must be supplied by CI}"
 TARGET_ARCH="${TARGET_ARCH:-$(dpkg --print-architecture)}"
+DEB_HOST_MULTIARCH="${DEB_HOST_MULTIARCH:-$(dpkg-architecture -qDEB_HOST_MULTIARCH)}"
 
 # -- Download Source
 
@@ -22,25 +23,30 @@ source_dir="$repo_root/mauikit-src"
 
 # -- Configure build.
 
+# MauiKit software must be built with CMake and ECM; never use Meson.
 build_dir="$repo_root/build"
-meson_dir="$build_dir/meson"
+cmake_dir="$build_dir/cmake"
 stage_dir="$build_dir/package"
-rm -rf "$meson_dir" "$stage_dir"
+rm -rf "$cmake_dir" "$stage_dir"
 mkdir -p "$build_dir"
 
-meson_args=(--prefix=/usr --buildtype=release)
+cmake_args=(
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DKDE_INSTALL_LIBDIR="lib/$DEB_HOST_MULTIARCH"
+    -DCMAKE_BUILD_TYPE=Release
+)
 if [ "$(dpkg-architecture -qDEB_HOST_ARCH)" = "amd64" ]; then
-    meson_args+=("-Dcpp_args=-march=x86-64-v3")
+    cmake_args+=("-DCMAKE_CXX_FLAGS=-march=x86-64-v3")
 fi
 
 # -- Compile Source
 
-meson setup "$meson_dir" "$source_dir" "${meson_args[@]}"
-meson compile -C "$meson_dir" -j "$(nproc)"
+cmake -S "$source_dir" -B "$cmake_dir" "${cmake_args[@]}"
+cmake --build "$cmake_dir" --parallel "$(nproc)"
 
 # -- Install source to DESTDIR.
 
-DESTDIR="$stage_dir" meson install -C "$meson_dir"
+DESTDIR="$stage_dir" cmake --install "$cmake_dir"
 
 style_qmldir="$(find "$stage_dir/usr" -type f -path '*/qt6/qml/org/mauikit/style/qmldir' -print -quit)"
 style_plugin="$(find "$stage_dir/usr" -type f -name 'libMauiStyle.so' -print -quit)"
@@ -60,7 +66,7 @@ Priority: optional
 Architecture: ${TARGET_ARCH}
 Maintainer: uri_herrera@nxos.org
 Provides: mauikit-git
-Depends: libc6,libkf6coreaddons6,libkf6i18n6,libkf6notifications6,libkf6windowsystem6,libqt6core6t64,libqt6gui6,libqt6qml6,libqt6quick6,libqt6quickcontrols2-6,libqt6quickshapes6,libqt6svg6,libqt6svgwidgets6,maui-manager (>= 4.0.4),qml6-module-org-kde-kirigami,qml6-module-qtquick-controls,qml6-module-qtquick-shapes,libxkbcommon0
+Depends: qml6-module-org-kde-purpose,qml6-module-qtmultimedia,qml6-module-qtquick-effects,qml6-module-qtquick-layouts,qml6-module-qtquick-window,libdbus-1-3,libkf6configcore6,libqt6concurrent6,libqt6dbus6,libqt6multimedia6,libqt6waylandclient6,libqt6widgets6,libwayland-client0,libxcb-icccm4,libxcb-shape0,libxcb1,libc6,libkf6coreaddons6,libkf6i18n6,libkf6notifications6,libkf6windowsystem6,libqt6core6t64,libqt6gui6,libqt6qml6,libqt6quick6,libqt6quickcontrols2-6,libqt6quickshapes6,libqt6svg6,libqt6svgwidgets6,maui-manager (>= 4.0.4),qml6-module-org-kde-kirigami,qml6-module-qtquick-controls,qml6-module-qtquick-shapes,libxkbcommon0
 Description: mauikit
  mauikit
 CONTROL
