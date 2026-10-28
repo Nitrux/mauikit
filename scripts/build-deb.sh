@@ -66,7 +66,7 @@ Priority: optional
 Architecture: ${TARGET_ARCH}
 Maintainer: uri_herrera@nxos.org
 Provides: mauikit-git
-Depends: qml6-module-org-kde-purpose,qml6-module-qtmultimedia,qml6-module-qtquick-effects,qml6-module-qtquick-layouts,qml6-module-qtquick-window,libdbus-1-3,libkf6configcore6,libqt6concurrent6,libqt6dbus6,libqt6multimedia6,libqt6waylandclient6,libqt6widgets6,libwayland-client0,libxcb-icccm4,libxcb-shape0,libxcb1,libc6,libkf6coreaddons6,libkf6i18n6,libkf6notifications6,libkf6windowsystem6,libqt6core6t64,libqt6gui6,libqt6qml6,libqt6quick6,libqt6quickcontrols2-6,libqt6quickshapes6,libqt6svg6,libqt6svgwidgets6,maui-manager (>= 4.0.4),qml6-module-org-kde-kirigami,qml6-module-qtquick-controls,qml6-module-qtquick-shapes,libxkbcommon0
+Depends: qml6-module-org-kde-purpose,qml6-module-qtmultimedia,qml6-module-qtquick-effects,qml6-module-qtquick-layouts,qml6-module-qtquick-window,libdbus-1-3,libkf6configcore6,libqt6concurrent6,libqt6dbus6,libqt6multimedia6,libqt6waylandclient6,libqt6widgets6,libwayland-client0,libxcb-icccm4,libxcb-shape0,libxcb1,libc6,libkf6coreaddons6,libkf6i18n6,libkf6notifications6,libkf6windowsystem6,libqt6core6t64,libqt6gui6,libqt6qml6,libqt6quick6,libqt6quickcontrols2-6,libqt6quickshapes6,libqt6svg6,libqt6svgwidgets6,maui-manager (>= 4.0.5),qml6-module-org-kde-kirigami,qml6-module-qtquick-controls,qml6-module-qtquick-shapes,libxkbcommon0
 Description: mauikit
  mauikit
 CONTROL
