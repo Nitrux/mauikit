@@ -28,6 +28,7 @@ $APT_COMMAND install -y --no-install-recommends \
     build-essential \
     libdbus-1-dev \
     libkf6config-dev \
+    libkf6colorscheme-dev \
     cmake \
     extra-cmake-modules \
     pkg-config \
